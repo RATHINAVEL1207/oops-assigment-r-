@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+    string name;
+    int m1, m2, m3;
+    float avg;
+    char grade;
+
+public:
+    Student(string n, int a, int b, int c) {
+        name = n;
+        m1 = a;
+        m2 = b;
+        m3 = c;
+
+        avg = (m1 + m2 + m3) / 3.0;
+
+        if(avg >= 90) grade = 'A';
+        else if(avg >= 75) grade = 'B';
+        else if(avg >= 50) grade = 'C';
+        else grade = 'F';
+    }
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Average: " << avg << endl;
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+int main() {
+    Student s1("Ravi", 85, 90, 88);
+    s1.display();
+}
