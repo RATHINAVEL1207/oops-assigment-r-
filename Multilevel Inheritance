@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+protected:
+    int id;
+public:
+    Employee(int i) : id(i) {}
+};
+
+class Salary : public Employee {
+protected:
+    double basic;
+public:
+    Salary(int i, double b) : Employee(i), basic(b) {}
+};
+
+class Bonus : public Salary {
+public:
+    Bonus(int i, double b) : Salary(i, b) {}
+
+    void calculateTotal() {
+        double bonus = basic * 0.2;
+        double total = basic + bonus;
+
+        cout << "Employee ID: " << id << endl;
+        cout << "Basic Salary: " << basic << endl;
+        cout << "Bonus: " << bonus << endl;
+        cout << "Total Salary: " << total << endl;
+    }
+};
+
+int main() {
+    Bonus emp(101, 25000);
+    emp.calculateTotal();
+    return 0;
+}
