@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class User {
+protected:
+    string name;
+public:
+    User(string n) : name(n) {}
+};
+
+class Product {
+protected:
+    double price;
+public:
+    Product(double p) : price(p) {}
+};
+
+class Cart : virtual public User, virtual public Product {
+public:
+    Cart(string n, double p) : User(n), Product(p) {}
+
+    double calculateTotal(int quantity) {
+        return price * quantity;
+    }
+};
+
+class Order : public Cart {
+public:
+    Order(string n, double p) : Cart(n, p) {}
+
+    void placeOrder(int quantity) {
+        double total = calculateTotal(quantity);
+        cout << "Customer: " << name << endl;
+        cout << "Total Price: " << total << endl;
+    }
+};
+
+int main() {
+    Order o("Ravi", 500);
+    o.placeOrder(3);
+    return 0;
+}
