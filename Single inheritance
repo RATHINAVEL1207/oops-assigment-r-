@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+class Account {
+protected:
+    double balance;
+public:
+    Account(double b) : balance(b) {}
+};
+
+class SavingsAccount : public Account {
+public:
+    SavingsAccount(double b) : Account(b) {}
+
+    void calculateInterest() {
+        double interest = balance * 0.05;
+        cout << "Balance: " << balance << endl;
+        cout << "Interest (5%): " << interest << endl;
+        cout << "Total: " << balance + interest << endl;
+    }
+};
+
+int main() {
+    SavingsAccount s(10000);
+    s.calculateInterest();
+    return 0;
+}
