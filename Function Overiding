@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+// Base Class
+class Employee {
+public:
+    virtual void calculateSalary() {
+        cout << "Calculating generic employee salary" << endl;
+    }
+};
+
+// Derived Class 1
+class FullTimeEmployee : public Employee {
+public:
+    void calculateSalary() {
+        cout << "Salary: Fixed monthly salary + bonuses" << endl;
+    }
+};
+
+// Derived Class 2
+class PartTimeEmployee : public Employee {
+public:
+    void calculateSalary() {
+        cout << "Salary: Hourly wage * hours worked" << endl;
+    }
+};
+
+int main() {
+    Employee* emp;  // Base class pointer
+
+    FullTimeEmployee fte;
+    PartTimeEmployee pte;
+
+    emp = &fte;
+    emp->calculateSalary();   // Calls FullTimeEmployee version
+
+    emp = &pte;
+    emp->calculateSalary();   // Calls PartTimeEmployee version
+
+    return 0;
+}
