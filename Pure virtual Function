@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+// Abstract Base Class
+class Vehicle {
+public:
+    // Pure virtual function
+    virtual void startEngine() = 0;
+
+    // Normal function
+    void fuelType() {
+        cout << "This vehicle uses fuel" << endl;
+    }
+};
+
+// Derived Class 1
+class Car : public Vehicle {
+public:
+    void startEngine() {
+        cout << "Car engine starts with a key or button" << endl;
+    }
+};
+
+// Derived Class 2
+class Bike : public Vehicle {
+public:
+    void startEngine() {
+        cout << "Bike engine starts with a kick or self-start" << endl;
+    }
+};
+
+int main() {
+    Vehicle* v;  // Base class pointer
+
+    Car c;
+    Bike b;
+
+    v = &c;
+    v->startEngine();
+    v->fuelType();
+
+    v = &b;
+    v->startEngine();
+    v->fuelType();
+
+    return 0;
+}
